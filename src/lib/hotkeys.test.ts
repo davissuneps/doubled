@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { hotkeyAction, typingFromTag } from './hotkeys'
+import { deskHotkeyBlocked, hotkeyAction, typingFromTag } from './hotkeys'
 
 describe('hotkeys', () => {
   it('maps the desk keys and ignores chords', () => {
@@ -18,5 +18,10 @@ describe('hotkeys', () => {
     expect(typingFromTag('INPUT', 'text')).toBe(true)
     expect(typingFromTag('BUTTON')).toBe(false)
     expect(typingFromTag('DIV', undefined, true)).toBe(true)
+  })
+
+  it('pauses desk shortcuts inside the cellar', () => {
+    expect(deskHotkeyBlocked(null, true)).toBe(true)
+    expect(deskHotkeyBlocked(null, false)).toBe(false)
   })
 })

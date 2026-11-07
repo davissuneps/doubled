@@ -23,6 +23,10 @@ export function isTypingTarget(target: EventTarget | null): boolean {
   return typingFromTag(target.tagName, type, target.isContentEditable)
 }
 
+export function deskHotkeyBlocked(target: EventTarget | null, inCellar: boolean): boolean {
+  return inCellar || isTypingTarget(target)
+}
+
 export function hotkeyAction(event: {
   key: string
   metaKey: boolean

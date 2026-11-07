@@ -764,6 +764,112 @@ textarea {
   list-style: none;
 }
 
+.cellar-square {
+  width: min(100%, 920px);
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.cell {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  padding: 0.45rem 0.5rem 0.55rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cell:nth-child(2n) {
+  border-right: 0;
+}
+
+.cell:nth-child(n + 3) {
+  border-bottom: 0;
+}
+
+.cell-view {
+  position: relative;
+  min-height: 0;
+  cursor: grab;
+  background: var(--bg);
+}
+
+.cell-view:active {
+  cursor: grabbing;
+}
+
+.cell-view canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.cell-view[data-webgl='missing']::after {
+  content: 'This pane needs WebGL.';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.cell-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.cell-name {
+  margin-right: auto;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cell .btn {
+  min-height: 40px;
+  padding: 0 0.55rem;
+  font-size: 0.82rem;
+}
+
+.cell-status {
+  margin: 0.28rem 0 0;
+  min-height: 1.15em;
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 720px) {
+  .cellar-square {
+    aspect-ratio: 1 / 1.45;
+  }
+
+  .cell {
+    padding: 0.35rem;
+  }
+
+  .cell-name {
+    flex-basis: 100%;
+    margin: 0 0 0.1rem;
+  }
+}
+
 @media (min-width: 720px) {
   .facts,
   .desks {
