@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Desks } from './components/Desks'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Note } from './components/Note'
+
+const Cellar = lazy(() => import('./components/Cellar').then((mod) => ({ default: mod.Cellar })))
 import { Playground } from './components/Playground'
 import { usePrefersReducedMotion } from './hooks/useMedia'
-import { hotkeyAction, isTypingTarget } from './lib/hotkeys'
+import { deskHotkeyBlocked, hotkeyAction } from './lib/hotkeys'
 import { describeMark, preset, shuffle, swap, type MarkState } from './lib/mark'
 import {
   deskLabel,
@@ -73,7 +75,8 @@ export function App() {
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      if (event.repeat || isTypingTarget(event.target)) return
+      const inCellar = event.target instanceof HTMLElement && Boolean(event.target.closest('#cellar'))
+      if (event.repeat || deskHotkeyBlocked(event.target, inCellar)) return
       const action = hotkeyAction(event)
       if (!action) return
       event.preventDefault()
@@ -103,6 +106,19 @@ export function App() {
           onReset={resetDesk}
         />
         <Note />
+        <Suspense
+          fallback={
+            <section className="section ruled" id="cellar" aria-busy="true">
+              <div className="wrap">
+                <p className="kicker">05 — Cellar</p>
+                <h2>Under the desk.</h2>
+                <p className="lead">The four machines are loading.</p>
+              </div>
+            </section>
+          }
+        >
+          <Cellar reduced={reduced} />
+        </Suspense>
       </main>
       <Footer />
     </>

@@ -109,7 +109,7 @@ export function Playground({
               {status}
             </p>
             <p className="keyline">
-              Keys 1 and 2 switch desks. Shortcuts pause while the note field is focused.
+              Keys 1 and 2 switch desks. Shortcuts pause in the note field and in the cellar.
             </p>
           </div>
           <div className="tool-controls">
