@@ -5,13 +5,14 @@ export function Footer() {
         <div className="footer-row">
           <p>Double D · Dmitry × Davis</p>
           <p>
-            <a href="https://github.com/davissuneps/doubled">Source</a>
+            <a className="link" href="https://github.com/davissuneps/doubled">
+              Source
+            </a>
           </p>
         </div>
         <p>
-          Fraunces by Undercase Type, Outfit by the Outfit Project, and IBM Plex Mono by IBM. All
-          three are used under the SIL Open Font License. No account, no tracker, and no form that
-          pretends to send.
+          Fraunces, Outfit, and IBM Plex Mono under the SIL Open Font License. No account and no
+          tracker.
         </p>
         <ul className="keys">
           <li>
@@ -27,7 +28,7 @@ export function Footer() {
             <kbd>W</kbd> Swap
           </li>
           <li>
-            <kbd>R</kbd> Reset
+            <kbd>R</kbd> Reset pair
           </li>
         </ul>
       </div>

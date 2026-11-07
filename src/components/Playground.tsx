@@ -54,25 +54,20 @@ export function Playground({
   return (
     <section className="band" id="playground" aria-labelledby="play-title">
       <div className="wrap section">
-        <p className="kicker">03 — Playground</p>
-        <h2 id="play-title">A desk for two Ds.</h2>
-        <p className="lead">
-          Drag either letter, or set its position with the sliders. Weight, softness, optical size,
-          italics, gap, and drift update the sheet and the lines below. Shuffle rolls a new pairing
-          inside safe ranges. Swap exchanges the two Ds. Reset returns this desk to its starting cut.
-        </p>
+        <div className="section-head">
+          <p className="kicker">03 — Pair</p>
+          <h2 id="play-title">A desk for two Ds.</h2>
+          <p className="lead">
+            Drag either letter, or set it with the sliders. Shuffle rolls a new pairing, Swap
+            exchanges the cuts, Reset restores this desk’s starting cut.
+          </p>
+        </div>
         <div className="tool">
           <div className="tool-stage">
-            <div className="stage-frame">
+            <div className="stage-frame panel">
               <div className="stage-meta">
-                <span>Pair / live</span>
-                <span>{deskLabel(perspective)} desk</span>
-              </div>
-              <div className="crops" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
+                <span>Live pair</span>
+                <span>{deskLabel(perspective)}</span>
               </div>
               <LetterPair
                 mark={mark}
@@ -106,10 +101,10 @@ export function Playground({
               </button>
             </div>
             <p className="status" role="status">
-              {status}
+              {status || 'Drag the letters or use the controls.'}
             </p>
-            <p className="keyline">
-              Keys 1 and 2 switch desks. Shortcuts pause in the note field and in the cellar.
+            <p className="hint">
+              Keys 1–2 switch desks. Shortcuts pause while a machine pane is focused.
             </p>
           </div>
           <div className="tool-controls">

@@ -5,15 +5,17 @@ import { Updraft } from './cellar/Updraft'
 
 export function Cellar({ reduced }: { reduced: boolean }) {
   return (
-    <section className="section ruled" id="cellar" aria-labelledby="cellar-title">
+    <section className="section ruled" id="machines" aria-labelledby="machines-title">
       <div className="wrap">
-        <p className="kicker">05 — Cellar</p>
-        <h2 id="cellar-title">Under the desk.</h2>
-        <p className="lead">
-          Four machines share one square, and none of them are sensible. Drag inside a pane, or use
-          the buttons under it. Arrow keys work once a pane is focused. Reset puts that machine back.
-        </p>
-        <div className="cellar-square">
+        <div className="section-head">
+          <p className="kicker">04 — Machines</p>
+          <h2 id="machines-title">Four more Ds.</h2>
+          <p className="lead">
+            Same desk, same palette. Drag inside a pane or use the buttons under it. Focus a pane for
+            arrow keys; Enter sends or pokes. Reset restores that machine alone.
+          </p>
+        </div>
+        <div className="machine-grid panel">
           <Updraft reduced={reduced} />
           <Jelly reduced={reduced} />
           <Portal reduced={reduced} />

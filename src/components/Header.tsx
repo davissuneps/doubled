@@ -16,6 +16,11 @@ export function Header({ perspective, onChange }: HeaderProps) {
           <span className="logo-mark">Double D</span>
           <span className="logo-sub">Dmitry × Davis</span>
         </a>
+        <nav className="nav" aria-label="On this page">
+          <a href="#desks">Desks</a>
+          <a href="#playground">Pair</a>
+          <a href="#machines">Machines</a>
+        </nav>
         <fieldset className="switch">
           <legend className="sr-only">Perspective</legend>
           {(['dmitry', 'davis'] as const).map((desk) => (

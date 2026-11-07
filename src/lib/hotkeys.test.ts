@@ -12,7 +12,7 @@ describe('hotkeys', () => {
     expect(hotkeyAction({ key: 'k', metaKey: false, ctrlKey: false, altKey: false })).toBeNull()
   })
 
-  it('lets shortcuts through sliders but not through the note field', () => {
+  it('lets shortcuts through sliders but not through text fields', () => {
     expect(typingFromTag('TEXTAREA')).toBe(true)
     expect(typingFromTag('INPUT', 'range')).toBe(false)
     expect(typingFromTag('INPUT', 'text')).toBe(true)
@@ -20,7 +20,7 @@ describe('hotkeys', () => {
     expect(typingFromTag('DIV', undefined, true)).toBe(true)
   })
 
-  it('pauses desk shortcuts inside the cellar', () => {
+  it('pauses desk shortcuts inside the machines section', () => {
     expect(deskHotkeyBlocked(null, true)).toBe(true)
     expect(deskHotkeyBlocked(null, false)).toBe(false)
   })

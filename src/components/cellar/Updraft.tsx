@@ -184,7 +184,7 @@ export function Updraft({ reduced }: { reduced: boolean }) {
           Reset
         </button>
       </div>
-      <p className="cell-status" role="status">
+      <p className="status cell-status" role="status">
         {status}
       </p>
     </div>

@@ -40,31 +40,17 @@ export function Hero({ mark, reduced }: HeroProps) {
             </span>
           </h1>
           <p className="dek">
-            Double D is Dmitry × Davis, a digital creative duo. This page is their shared desk: a
-            working instrument for pairing two cuts of the letter D.
+            Double D is Dmitry × Davis. This page is their shared desk: one pair of Ds to tune, then
+            four machines that refuse to sit still.
           </p>
           <div className="hero-actions">
             <a className="link cta" href="#playground">
               Tune the pair
             </a>
-            <a className="link" href="#desks">
-              The two desks
+            <a className="link" href="#machines">
+              Meet the machines
             </a>
           </div>
-          <ul className="facts">
-            <li>
-              <span>Desks</span>
-              Two, each with a tune
-            </li>
-            <li>
-              <span>Letter</span>
-              D, cut two ways
-            </li>
-            <li>
-              <span>Account</span>
-              None on this page
-            </li>
-          </ul>
         </div>
         <div className="hero-mark">
           <div className="hero-mark-shift" ref={shiftRef}>

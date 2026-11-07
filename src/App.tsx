@@ -3,9 +3,6 @@ import { Desks } from './components/Desks'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Note } from './components/Note'
-
-const Cellar = lazy(() => import('./components/Cellar').then((mod) => ({ default: mod.Cellar })))
 import { Playground } from './components/Playground'
 import { usePrefersReducedMotion } from './hooks/useMedia'
 import { deskHotkeyBlocked, hotkeyAction } from './lib/hotkeys'
@@ -16,6 +13,8 @@ import {
   storePerspective,
   type Perspective,
 } from './lib/theme'
+
+const Cellar = lazy(() => import('./components/Cellar').then((mod) => ({ default: mod.Cellar })))
 
 const THEME_COLOR: Record<Perspective, string> = {
   dmitry: '#12110F',
@@ -45,7 +44,7 @@ export function App() {
 
   function selectDesk(next: Perspective) {
     setPerspective(next)
-    setStatus(`Showing the ${deskLabel(next)} desk.`)
+    setStatus(`${deskLabel(next)} desk.`)
   }
 
   function writeDesk(next: MarkState, message?: string) {
@@ -67,7 +66,7 @@ export function App() {
 
   function resetDesk() {
     const desk = perspectiveRef.current
-    writeDesk(preset(desk), `Reset to the ${deskLabel(desk)} starting cut.`)
+    writeDesk(preset(desk), `Reset to the ${deskLabel(desk)} cut.`)
   }
 
   const actions = useRef({ selectDesk, shuffleDesk, swapDesk, resetDesk })
@@ -75,8 +74,9 @@ export function App() {
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      const inCellar = event.target instanceof HTMLElement && Boolean(event.target.closest('#cellar'))
-      if (event.repeat || deskHotkeyBlocked(event.target, inCellar)) return
+      const inMachines =
+        event.target instanceof HTMLElement && Boolean(event.target.closest('#machines'))
+      if (event.repeat || deskHotkeyBlocked(event.target, inMachines)) return
       const action = hotkeyAction(event)
       if (!action) return
       event.preventDefault()
@@ -105,14 +105,15 @@ export function App() {
           onSwap={swapDesk}
           onReset={resetDesk}
         />
-        <Note />
         <Suspense
           fallback={
-            <section className="section ruled" id="cellar" aria-busy="true">
+            <section className="section ruled" id="machines" aria-busy="true">
               <div className="wrap">
-                <p className="kicker">05 — Cellar</p>
-                <h2>Under the desk.</h2>
-                <p className="lead">The four machines are loading.</p>
+                <div className="section-head">
+                  <p className="kicker">04 — Machines</p>
+                  <h2>Four more Ds.</h2>
+                  <p className="lead">Loading the machines.</p>
+                </div>
               </div>
             </section>
           }
