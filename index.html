@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Double D is Dmitry × Davis, a digital creative duo. A typographic playground for pairing two cuts of the letter D."
+    />
+    <meta name="theme-color" content="#F4EFE6" />
+    <title>Double D — Dmitry × Davis</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: light;
+        background: #f4efe6;
+        color: #16140f;
+      }
+      :root[data-theme='dmitry'] {
+        color-scheme: dark;
+        background: #12110f;
+        color: #f3eee4;
+      }
+      body {
+        margin: 0;
+      }
+    </style>
+    <script>
+      try {
+        var stored = localStorage.getItem('doubled-perspective')
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        var theme = stored === 'dmitry' || stored === 'davis' ? stored : dark ? 'dmitry' : 'davis'
+        document.documentElement.dataset.theme = theme
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.setAttribute('content', theme === 'dmitry' ? '#12110F' : '#F4EFE6')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p style="font-family: Georgia, 'Times New Roman', serif; padding: 2rem; max-width: 38rem">
+        Double D needs JavaScript to run the playground. The script stays on this page — there is no
+        account and no tracker behind it.
+      </p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
