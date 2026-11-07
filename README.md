@@ -4,7 +4,7 @@ Double D is Dmitry × Davis, a digital creative duo. This repository is their sh
 
 Switch between the Dmitry desk and the Davis desk. Each one keeps its own palette and its own tune. Drag either letter, or retune weight, softness, optical size, italics, gap, stroke, and drift. Shuffle a new pairing, swap the two Ds, or reset the active desk.
 
-Nothing is submitted anywhere. The note at the bottom can be copied, or opened as a mail draft with the To field left empty. 
+Nothing is submitted anywhere. The note at the bottom can be copied, or opened as a mail draft with the To field left empty.
 
 ## Requirements
 
